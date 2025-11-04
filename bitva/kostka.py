@@ -4,10 +4,16 @@ import random
 
 class Kostka:
     def __init__(self, pocet_sten = 6):
-        self.pocet_sten = pocet_sten
+        self.__pocet_sten = pocet_sten
 
     def hod(self):
-        return random.randint(1,self.pocet_sten)
+        return random.randint(1,self.__pocet_sten)
+
+    def __str__(self):
+        return f"Toto je kostka s {self.__pocet_sten} stenami."
+    
+    def getPocet_sten(self):
+        return self.__pocet_sten
 
 def main():
     k1 = Kostka()

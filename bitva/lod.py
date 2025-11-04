@@ -18,16 +18,19 @@ class Lod:
         self._kostka = kostka
         self._zprava = ''
 
-    def __str_(self):
+    def __str__(self):
         return str(self._jmeno)
+
+    def je_operacni(self):
+        return self._trup > 0
 
     def utoc(self, souper):
         uder = self._utok + self._kostka.hod()
         zprava = f'{self._jmeno} pali kanony za {uder} hp.'
-        souper.brans_se(uder)
+        souper.bran_se(uder)
 
     def bran_se(self, uder):
-        poskozeni = uder - (self._stit + self._kostka.hod{})
+        poskozeni = uder - (self._stit + self._kostka.hod())
         if  poskozeni > 0:
             zprava = f'{self._jmeno} utrpela zasah o sile {poskozeni} hp.'
             self._trup = self._trup - poskozeni
@@ -35,11 +38,11 @@ class Lod:
                 self._trup = 0
                 zprava = f'{zprava[:-1]} a byla znicena.'
         else:
-            zprava f'{self._jmeno} odrazil utok stity.'
-        self._nastav_zpravu(zprava)
+            zprava = f'{self._jmeno} odrazil utok stity.'
+        self.nastav_zpravu(zprava)
     
     def nastav_zpravu(self, zprava):
         self._zprava = zprava
 
     def vypis_zpravu(self):
-        return self:_zprava
+        return self._zprava
